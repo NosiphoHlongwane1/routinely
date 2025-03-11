@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routine | Morning Routine</title>
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <button onclick="window.location.href='index.html'">Routinely</button>
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="notes.html">Notes</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- Left Section: Task Timer & Sleep Timer -->
+        <div class="left-section">
+            <div class="task-card">
+                <h2>Set Your Task</h2>
+                <input type="text" id="taskName" placeholder="Enter Task (e.g., Morning Run)">
+                <input type="number" id="taskTime" placeholder="Minutes" min="1">
+                <button onclick="startTimer()">Start Task</button>
+                <p id="countdown"></p>
+                <p id="taskMessage"></p>
+            </div>
+
+            <div class="sleep-card">
+                <h2>Set Sleep Time</h2>
+                <button onclick="startSleepTimer()">Sleep Now (8 hrs)</button>
+                <p id="sleepMessage"></p>
+            </div>
+        </div>
+
+        <!-- Right Section: To-Do List -->
+        <div class="right-section">
+            <h2>To-Do List</h2>
+            <input type="text" id="newTask" placeholder="Add a new task">
+            <button onclick="addTask()">Add Task</button>
+            <ul id="taskList"></ul>
+        </div>
+    </div>
+
+    <audio id="bellSound" src="../routinely/media/lofi-alarm-clock-243766.mp3"></audio>
+    
+    <script src="src/script.js"></script>
+</body>
+</html>

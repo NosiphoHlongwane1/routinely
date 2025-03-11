@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes | Write Your Thoughts</title>
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <button onclick="window.location.href='index.html'">Routinely</button>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="routine.html">Routine</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Left Section: Long Note -->
+        <div class="left-section">
+            <h2>Write Your Thoughts</h2>
+            <input type="text" id="noteTopic" placeholder="Note Topic">
+            <textarea id="longNote" placeholder="Write your thoughts here..."></textarea>
+            <button onclick="saveLongNote()">Save Note</button>
+        </div>
+
+        <!-- Right Section: Sticky Notes & Reminder -->
+        <div class="right-section">
+            <div class="sticky-note pink">
+                <h3>Priorities</h3>
+                <input type="text" id="priorityTopic1" placeholder="Priority Topic">
+                <textarea id="priorityNote1" placeholder="Write priority..."></textarea>
+                <button onclick="savePriority(1)">Save</button>
+            </div>
+
+            <div class="sticky-note purple">
+                <h3>Priorities</h3>
+                <input type="text" id="priorityTopic2" placeholder="Priority Topic">
+                <textarea id="priorityNote2" placeholder="Write priority..."></textarea>
+                <button onclick="savePriority(2)">Save</button>
+            </div>
+
+            <!-- Reminder Section -->
+<div class="reminder">
+    <h3>Set a Reminder</h3>
+    <input type="text" id="reminderText" placeholder="Reminder Description">
+    <input type="date" id="reminderDate">
+    <input type="time" id="reminderTime">
+    <button onclick="setReminder()">Set Reminder</button>
+    <div id="reminderList"></div>
+</div>     
+        </div>
+    </div>
+
+    <!-- Saved Notes & Priorities -->
+    <div class="saved-container">
+        <h2>Saved Notes & Priorities</h2>
+        <div id="savedNotes"></div>
+    </div>
+
+    <script src="src/script.js"></script>
+</body>
+</html>

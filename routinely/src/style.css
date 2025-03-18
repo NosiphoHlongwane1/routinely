@@ -192,12 +192,25 @@ a:hover {
     width: 45%;
 }
 
-.task-card, .sleep-card {
+.task-card {
     background:  rgba(144, 190, 140, 0.3);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+}
+
+.mood-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#moodDisplay {
+    font-size: 2em;
+    margin-top: 10px;
 }
 
 input, button {

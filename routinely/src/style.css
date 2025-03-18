@@ -310,3 +310,7 @@ input[type="time"] {
     margin-bottom: 10px;
     border-radius: 5px;
 }
+
+.saved-note h2 {
+    color:  #f0b79d; 
+}

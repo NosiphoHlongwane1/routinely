@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Routinely | daily Assistance</title>
+    <title>Routinely | Daily Assistance</title>
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
@@ -31,12 +31,20 @@
                 <p id="countdown"></p>
                 <p id="taskMessage"></p>
             </div>
-
-            <div class="sleep-card">
-                <h2>Set Sleep Time</h2>
-                <button onclick="startSleepTimer()">Sleep Now (8 hrs)</button>
-                <p id="sleepMessage"></p>
+            <div class="mood-card">
+                <h2>Today's Mood</h2>
+                <select id="moodSelector" onchange="updateMood()">
+                    <option value="happy">Happy</option>
+                    <option value="sad">Sad</option>
+                    <option value="excited">Excited</option>
+                    <option value="tired">Tired</option>
+                    <!-- Add more moods as needed -->
+                </select>
+                <p id="moodDisplay">😊</p>
             </div>
+
+
+           
         </div>
 
         <!-- Right Section: To-Do List -->

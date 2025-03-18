@@ -211,12 +211,20 @@ function startTimer() {
     }, 1000);
 }
 
-// **Sleep Timer**
-function startSleepTimer() {
-    document.getElementById("sleepMessage").innerText = "Sleeping... See you in 8 hours!";
-    setTimeout(() => {
-        document.getElementById("sleepMessage").innerText = "Wake up, sleepyhead!";
-    }, 8 * 60 * 60 * 1000); // 8 hours
+function updateMood() {
+    const moodSelector = document.getElementById('moodSelector');
+    const moodDisplay = document.getElementById('moodDisplay');
+    const selectedMood = moodSelector.value;
+
+    const moodEmojis = {
+        happy: '😊',
+        sad: '😢',
+        excited: '😃',
+        tired: '😴'
+        // Add more moods and corresponding emojis as needed
+    };
+
+    moodDisplay.textContent = moodEmojis[selectedMood] || '😊';
 }
 
 // **To-Do List**
@@ -255,8 +263,6 @@ function addTask() {
 
     document.getElementById("newTask").value = "";
 }
-
-
 
 /* NOTES JAVASCRIPT */
 

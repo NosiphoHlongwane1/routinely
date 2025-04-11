@@ -185,7 +185,7 @@ setInterval(displayQuote, 120000);
 // **Task Timer**
 // JavaScript part
 let timerInterval;
-const alertSound = new Audio("https://www.soundjay.com/button/beep-07.wav"); // or your own file
+const alertSound = new Audio("https://github.com/NosiphoHlongwane1/routinely/blob/main/routinely/media/beep-05.mp3"); // or your own file
 
 function startTimer() {
     let taskName = document.getElementById("taskName").value;

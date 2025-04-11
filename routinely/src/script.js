@@ -185,40 +185,41 @@ setInterval(displayQuote, 120000);
 // **Task Timer**
 // JavaScript part
 let timerInterval;
-const alertSound = new Audio("https://www.soundjay.com/buttons/beep-05.mp3"); // or your own file
+const alertSound = new Audio("../media/beep-05.mp3"); 
 
 function startTimer() {
-    let taskName = document.getElementById("taskName").value;
+    const taskName = document.getElementById("taskName").value;
     let taskTime = parseInt(document.getElementById("taskTime").value);
-    
-    if (!taskName || !taskTime) {
-        alert("Please enter a task and time!");
+
+    if (!taskName || !taskTime || taskTime < 1) {
+        alert("Please enter a valid task and time!");
         return;
     }
 
-    let seconds = taskTime * 60;
-    document.getElementById("countdown").innerText = `Time Left: ${taskTime}:00`;
+    document.getElementById("countdown").innerText = `Time Left: ${taskTime} min(s)`;
     document.getElementById("taskMessage").innerText = "";
 
     clearInterval(timerInterval);
+    
     timerInterval = setInterval(() => {
-        let minutes = Math.floor(seconds / 60);
-        let secs = seconds % 60;
-        document.getElementById("countdown").innerText = `Time Left: ${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        taskTime--;
 
-        if (seconds === 0) {
+        if (taskTime >= 0) {
+            document.getElementById("countdown").innerText = `Time Left: ${taskTime} min(s)`;
+        }
+
+        if (taskTime === 0) {
             clearInterval(timerInterval);
             document.getElementById("taskMessage").innerText = `Well done for completing ${taskName}!`;
             alertSound.play();
         }
 
-        seconds--;
-    }, 1000);
+    }, 60000); // Decrease every 1 minute
 }
 
 function resetTimer() {
     clearInterval(timerInterval);
-    document.getElementById("countdown").innerText = "Time Left: 0:00";
+    document.getElementById("countdown").innerText = "Time Left: 0 min(s)";
     document.getElementById("taskMessage").innerText = "";
 }
 

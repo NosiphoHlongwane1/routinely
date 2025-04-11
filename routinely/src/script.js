@@ -185,7 +185,6 @@ setInterval(displayQuote, 120000);
 // **Task Timer**
 // JavaScript part
 let timerInterval;
-let displayMode = "full"; // "full" = mm:ss, "minute" = minutes only
 let seconds = 0;
 const alertSound = new Audio("../media/beep-05.mp3");
 
@@ -218,14 +217,9 @@ function startTimer() {
 
 function updateDisplay() {
     const countdown = document.getElementById("countdown");
-
-    if (displayMode === "minute") {
-        countdown.innerText = `Time Left: ${Math.ceil(seconds / 60)} min(s)`;
-    } else {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        countdown.innerText = `Time Left: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
-    }
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    countdown.innerText = `Time Left: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
 function resetTimer() {
@@ -234,6 +228,7 @@ function resetTimer() {
     document.getElementById("countdown").innerText = "Time Left: 0:00";
     document.getElementById("taskMessage").innerText = "";
 }
+
 
 function toggleDisplayMode() {
     displayMode = displayMode === "full" ? "minute" : "full";

@@ -25,11 +25,39 @@
         <div class="left-section">
             <div class="task-card">
                 <h2>Set Your Task</h2>
-                <input type="text" id="taskName" placeholder="Enter Task (e.g., Morning Run)">
-                <input type="number" id="taskTime" placeholder="Minutes" min="1">
-                <button onclick="startTimer()">Start Task</button>
-                <p id="countdown"></p>
-                <p id="taskMessage"></p>
+                 <input 
+        type="text" 
+        id="taskName" 
+        placeholder="Enter Task (e.g., Morning Run)" 
+        style="width: 100%; padding: 10px; margin-bottom: 10px;"
+    >
+
+    <input 
+        type="number" 
+        id="taskTime" 
+        placeholder="Minutes" 
+        min="1" 
+        style="width: 100%; padding: 10px; margin-bottom: 10px;"
+    >
+
+    <div style="display: flex; gap: 10px;">
+        <button 
+            onclick="startTimer()" 
+            style="flex: 1; padding: 10px; background-color: #4CAF50; color: white; border: none;"
+        >
+            Start Task
+        </button>
+
+        <button 
+            onclick="resetTimer()" 
+            style="flex: 1; padding: 10px; background-color: #f44336; color: white; border: none;"
+        >
+            Reset
+        </button>
+    </div>
+
+    <p id="countdown" style="margin-top: 20px; font-weight: bold;">Time Left: 0:00</p>
+    <p id="taskMessage" style="color: #4CAF50;"></p>
             </div>
             <div class="mood-card">
                 <h2>Today's Mood</h2>

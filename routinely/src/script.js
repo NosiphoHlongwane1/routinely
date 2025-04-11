@@ -185,42 +185,61 @@ setInterval(displayQuote, 120000);
 // **Task Timer**
 // JavaScript part
 let timerInterval;
-const alertSound = new Audio("../media/beep-05.mp3"); 
+let displayMode = "full"; // "full" = mm:ss, "minute" = minutes only
+let seconds = 0;
+const alertSound = new Audio("media/beep-05.mp3");
 
 function startTimer() {
     const taskName = document.getElementById("taskName").value;
-    let taskTime = parseInt(document.getElementById("taskTime").value);
+    const taskTime = parseInt(document.getElementById("taskTime").value);
 
-    if (!taskName || !taskTime || taskTime < 1) {
+    if (!taskName || isNaN(taskTime) || taskTime < 1) {
         alert("Please enter a valid task and time!");
         return;
     }
 
-    document.getElementById("countdown").innerText = `Time Left: ${taskTime} min(s)`;
+    seconds = taskTime * 60;
     document.getElementById("taskMessage").innerText = "";
+    updateDisplay();
 
     clearInterval(timerInterval);
-    
     timerInterval = setInterval(() => {
-        taskTime--;
+        seconds--;
 
-        if (taskTime >= 0) {
-            document.getElementById("countdown").innerText = `Time Left: ${taskTime} min(s)`;
+        if (seconds >= 0) {
+            updateDisplay();
         }
 
-        if (taskTime === 0) {
+        if (seconds === 0) {
             clearInterval(timerInterval);
             document.getElementById("taskMessage").innerText = `Well done for completing ${taskName}!`;
             alertSound.play();
         }
+    }, 1000); // Decrease every second for smooth switching
+}
 
-    }, 60000); // Decrease every 1 minute
+function updateDisplay() {
+    const countdown = document.getElementById("countdown");
+
+    if (displayMode === "minute") {
+        countdown.innerText = `Time Left: ${Math.ceil(seconds / 60)} min(s)`;
+    } else {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        countdown.innerText = `Time Left: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
 }
 
 function resetTimer() {
     clearInterval(timerInterval);
-    document.getElementById("countdown").innerText = "Time Left: 0 min(s)";
+    seconds = 0;
+    document.getElementById("countdown").innerText = "Time Left: 0:00";
     document.getElementById("taskMessage").innerText = "";
+}
+
+function toggleDisplayMode() {
+    displayMode = displayMode === "full" ? "minute" : "full";
+    updateDisplay();
 }
 
 function updateMood() {

@@ -204,18 +204,16 @@ function startTimer() {
 
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
-        seconds--;
+        updateDisplay();
 
-        if (seconds >= 0) {
-            updateDisplay();
-        }
-
-        if (seconds === 0) {
+        if (seconds <= 0) {
             clearInterval(timerInterval);
             document.getElementById("taskMessage").innerText = `Well done for completing ${taskName}!`;
             alertSound.play();
         }
-    }, 1000); // Decrease every second for smooth switching
+
+        seconds--;
+    }, 1000);
 }
 
 function updateDisplay() {

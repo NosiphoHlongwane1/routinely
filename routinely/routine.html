@@ -1,77 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Routinely | Daily Assistance</title>
-    <link rel="stylesheet" href="src/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Routinely | Daily Assistance</title>
+  <link rel="stylesheet" href="src/style.css" />
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">
-            <button onclick="window.location.href='index.html'">Routinely</button>
-        </div>
-
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="notes.html">Notes</a></li>
-        </ul>
-    </nav>
-    
-    <div class="container">
-        <!-- Left Section: Task Timer & Sleep Timer -->
-        <div class="left-section">
-            <div class="task-card">
-                <h2>Set Your Task</h2>
-                 <input 
-        type="text" 
-        id="taskName" 
-        placeholder="Enter Task (e.g., Morning Run)" 
-        style="width: 100%; padding: 10px; margin-bottom: 10px;"
-    >
-
-    <input 
-        type="number" 
-        id="taskTime" 
-        placeholder="Minutes" 
-        min="60:00" 
-        style="width: 100%; padding: 10px; margin-bottom: 10px;"
-    >
-
-    <div style="display: flex; gap: 10px;">
-       <button onclick="startTimer()">Start</button
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <button onclick="window.location.href='index.html'">Routinely</button>
     </div>
 
-    <p id="countdown" style="margin-top: 20px; font-weight: bold;">Time Left: 0:00</p>
-    <p id="taskMessage" style="color: #4CAF50;"></p>
-            </div>
-            <div class="mood-card">
-                <h2>Today's Mood</h2>
-                <select id="moodSelector" onchange="updateMood()">
-                    <option value="happy">Happy</option>
-                    <option value="sad">Sad</option>
-                    <option value="excited">Excited</option>
-                    <option value="tired">Tired</option>
-                    <!-- Add more moods as needed -->
-                </select>
-                <p id="moodDisplay">😊</p>
-            </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="notes.html">Notes</a></li>
+    </ul>
+  </nav>
 
-        </div>
+  <!-- Main Content Container -->
+  <div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+      <div class="task-card">
+        <h2>Set Your Task</h2>
+        <input type="text" id="taskName" placeholder="Enter Task (e.g., Morning Run)">
+        <input type="number" id="taskTime" placeholder="Minutes" min="00:00">
+        <button onclick="startTimer()">Start</button>
+        <p id="countdown">Time Left: 0:00</p>
+        <p id="taskMessage"></p>
+      </div>
 
-        <!-- Right Section: To-Do List -->
-        <div class="right-section">
-            <h2>To-Do List</h2>
-            <input type="text" id="newTask" placeholder="Add a new task">
-            <button onclick="addTask()">Add Task</button>
-            <ul id="taskList"></ul>
-        </div>
+      <div class="mood-card">
+        <h2>Today's Mood</h2>
+        <select id="moodSelector" onchange="updateMood()">
+          <option value="happy">Happy</option>
+          <option value="sad">Sad</option>
+          <option value="excited">Excited</option>
+          <option value="tired">Tired</option>
+        </select>
+        <p id="moodDisplay">😊</p>
+      </div>
     </div>
 
-   <audio id="bellSound" src="./media/beep-05.mp3"></audio>
+    <!-- Right Section -->
+    <div class="right-section">
+      <h2>To-Do List</h2>
+      <input type="text" id="newTask" placeholder="Add a new task">
+      <button onclick="addTask()">Add Task</button>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
 
-    <script src="src/script.js"></script>
+  <!-- Audio and Script -->
+  <audio id="bellSound" src="./media/beep-05.mp3"></audio>
+  <script src="src/script.js"></script>
 </body>
 </html>

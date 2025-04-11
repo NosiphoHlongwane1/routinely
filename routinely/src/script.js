@@ -185,55 +185,44 @@ setInterval(displayQuote, 120000);
 // **Task Timer**
 // JavaScript part
 let timerInterval;
-let seconds = 0;
-const alertSound = new Audio("../media/beep-05.mp3");
+const alertSound = new Audio("../routinely/media/beep-05.mp3"); // Local file path
 
 function startTimer() {
     const taskName = document.getElementById("taskName").value;
-    const taskTime = parseInt(document.getElementById("taskTime").value);
+    let taskTime = parseInt(document.getElementById("taskTime").value);
 
-    if (!taskName || isNaN(taskTime) || taskTime < 1) {
+    if (!taskName || !taskTime || taskTime < 1) {
         alert("Please enter a valid task and time!");
         return;
     }
 
-    seconds = taskTime * 60;
+    document.getElementById("countdown").innerText = `Time Left: ${taskTime} min(s)`;
     document.getElementById("taskMessage").innerText = "";
-    updateDisplay();
 
     clearInterval(timerInterval);
+    
     timerInterval = setInterval(() => {
-        updateDisplay();
+        taskTime--;
 
-        if (seconds <= 0) {
+        if (taskTime >= 0) {
+            document.getElementById("countdown").innerText = `Time Left: ${taskTime} min(s)`;
+        }
+
+        if (taskTime === 0) {
             clearInterval(timerInterval);
             document.getElementById("taskMessage").innerText = `Well done for completing ${taskName}!`;
             alertSound.play();
         }
 
-        seconds--;
-    }, 1000);
-}
-
-function updateDisplay() {
-    const countdown = document.getElementById("countdown");
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    countdown.innerText = `Time Left: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }, 60000); // Decrease every 1 minute
 }
 
 function resetTimer() {
     clearInterval(timerInterval);
-    seconds = 0;
-    document.getElementById("countdown").innerText = "Time Left: 0:00";
+    document.getElementById("countdown").innerText = "Time Left: 0 min(s)";
     document.getElementById("taskMessage").innerText = "";
 }
 
-
-function toggleDisplayMode() {
-    displayMode = displayMode === "full" ? "minute" : "full";
-    updateDisplay();
-}
 
 function updateMood() {
     const moodSelector = document.getElementById('moodSelector');

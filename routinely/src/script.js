@@ -187,7 +187,7 @@ setInterval(displayQuote, 120000);
 let timerInterval;
 let displayMode = "full"; // "full" = mm:ss, "minute" = minutes only
 let seconds = 0;
-const alertSound = new Audio("media/beep-05.mp3");
+const alertSound = new Audio("../media/beep-05.mp3");
 
 function startTimer() {
     const taskName = document.getElementById("taskName").value;

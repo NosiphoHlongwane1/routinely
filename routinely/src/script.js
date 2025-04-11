@@ -183,7 +183,10 @@ setInterval(displayQuote, 120000);
 /* ROUTINE JAVASCRIPT */
 
 // **Task Timer**
+// JavaScript part
 let timerInterval;
+const alertSound = new Audio("https://www.soundjay.com/button/beep-07.wav"); // or your own file
+
 function startTimer() {
     let taskName = document.getElementById("taskName").value;
     let taskTime = parseInt(document.getElementById("taskTime").value);
@@ -202,13 +205,21 @@ function startTimer() {
         let minutes = Math.floor(seconds / 60);
         let secs = seconds % 60;
         document.getElementById("countdown").innerText = `Time Left: ${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-        
+
         if (seconds === 0) {
             clearInterval(timerInterval);
             document.getElementById("taskMessage").innerText = `Well done for completing ${taskName}!`;
+            alertSound.play();
         }
+
         seconds--;
     }, 1000);
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    document.getElementById("countdown").innerText = "Time Left: 0:00";
+    document.getElementById("taskMessage").innerText = "";
 }
 
 function updateMood() {
